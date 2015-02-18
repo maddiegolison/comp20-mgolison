@@ -1,0 +1,34 @@
+/* responsive.css */
+
+@media only screen and (min-width: 1200px) {
+	.software {
+		width:128px; 
+		height:240px; 
+		background:url(software.png) 0 0px;
+	}
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1200px) {
+	.software {
+		width:128px; 
+		height:240px; 
+		background:url(software.png) 128 0px;
+	}
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1100px) {
+	.software {
+		width:128px; 
+		height:240px; 
+		background:url(software.png) 256 0px;
+	}
+}
+
+
+@media only screen and (min-width: 1000px) and (max-width: 400px) {
+	.software {
+		width:128px; 
+		height:240px; 
+		background:url(software.png) 512 -240px;
+	}
+}
