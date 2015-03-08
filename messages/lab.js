@@ -10,7 +10,7 @@ function parse() {
 
 function parseData() {
 
-	if (request.readyState() == 4 && request.status == 200){
+	if (request.readyState == 4 && request.status == 200){
 		messagesDiv = document.getElementById("messages");
 		converted = JSON.parse(request.responseText);
 		for (i = 0; i < converted.length; i++) {
