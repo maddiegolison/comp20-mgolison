@@ -36,7 +36,6 @@
 					navigator.geolocation.getCurrentPosition(function(position) {
 						myLat = position.coords.latitude;
 						myLng = position.coords.longitude;
-						console.log("hi");
 						sendLocations();
 						renderMap();
 					});
@@ -54,7 +53,8 @@
 			}
 			function parseData() {
 				if (request.readyState == 4 && request.status == 200){
-					console.log(request.responseText);
+					data = JSON.parse(request.responseText);
+					console.log(data);
 				}
 			}
 			function renderMap()
