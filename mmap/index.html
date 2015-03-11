@@ -74,16 +74,19 @@
 			}
 			function computeDistance(newlat, newlon) {
 				var R = 6371000; // metres
-				var latrad1 = myLat.toRadians();
-				var latrad2 = newlat.toRadians();
-				var radlatdif = (newlat-myLat).toRadians();
-				var radlondif = (newlon-myLng).toRadians();
+				var latrad1 = toRadians(myLat);
+				var latrad2 = toRadians(newlat);
+				var radlatdif = toRadians(newlat-myLat);
+				var radlondif = toRadians(newlon-myLng);
 				var a = Math.sin(radlatdif/2) * Math.sin(radlatdif/2) +
         				Math.cos(latrad1) * Math.cos(latrad2) *
         				Math.sin(radlondif/2) * Math.sin(radlondif/2);
 				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 				var d = R * c;
 				return d;
+			}
+			function toRadians(num){
+				return num*Math.PI/180;
 			}
 
 			function renderMap()
