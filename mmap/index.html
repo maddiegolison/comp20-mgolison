@@ -55,12 +55,13 @@
 				if (request.readyState == 4 && request.status == 200){
 					data = JSON.parse(request.responseText);
 					for (i = 0; i < data.length; i++) {
-							newlat = data[i].lat;
-							newlon = data[i].lng;
+							var newlat = data[i].lat;
+							var newlon = data[i].lng;
+							var d = computeDistance(newlat, newlon);
 							newPerson = new google.maps.LatLng(newlat, newlon);
 							newMarker = new google.maps.Marker({
 										position: newPerson,
-										title: "Here I Am!"
+										title: "Here I Am!" + d;
 									});
 							newMarker.setMap(map);
 							google.maps.event.addListener(newMarker, 'click', function() {
@@ -70,6 +71,19 @@
 
 					}
 				}
+			}
+			function computeDistance(newlat, newlon) {
+				var R = 6371000; // metres
+				var latrad1 = myLat.toRadians();
+				var latrad2 = newlat.toRadians();
+				var radlatdif = (newlat-myLat).toRadians();
+				var radlondif = (newlon-myLng).toRadians();
+				var a = Math.sin(radlatdif/2) * Math.sin(radlatdif/2) +
+        				Math.cos(latrad1) * Math.cos(latrad2) *
+        				Math.sin(radlondif/2) * Math.sin(radlondif/2);
+				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+				var d = R * c;
+				return d;
 			}
 
 			function renderMap()
