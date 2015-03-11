@@ -54,9 +54,22 @@
 			function parseData() {
 				if (request.readyState == 4 && request.status == 200){
 					data = JSON.parse(request.responseText);
-					console.log(data);
+					for (i = 0; i < data.length; i++) {
+							newPerson = new google.maps.LatLng(myLat, myLng);
+							newMarker = new google.maps.Marker({
+										position: newPerson,
+										title: "Here I Am!"
+									});
+							newMarker.setMap(map);
+							google.maps.event.addListener(newMarker, 'click', function() {
+									infowindow.setContent(newMarker.title);
+									infowindow.open(map, newMarker);
+								});
+
+					}
 				}
 			}
+			
 			function renderMap()
 			{
 				me = new google.maps.LatLng(myLat, myLng);
