@@ -61,7 +61,7 @@
 							newPerson = new google.maps.LatLng(newlat, newlon);
 							newMarker = new google.maps.Marker({
 										position: newPerson,
-										title: "Here I Am!" + d
+										title: "Here is "+ data[i].login + " " + d
 									});
 							newMarker.setMap(map);
 							google.maps.event.addListener(newMarker, 'click', function() {
