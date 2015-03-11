@@ -96,10 +96,11 @@
 				// Update map and go there...
 				map.panTo(me);
 	
-				// Create a marker
+				var image = 'google-marker.png';
 				marker = new google.maps.Marker({
 					position: me,
-					title: "Here I Am!"
+					title: "Here I Am!",
+					icon: image
 				});
 				marker.setMap(map);
 					
