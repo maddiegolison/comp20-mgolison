@@ -55,7 +55,9 @@
 				if (request.readyState == 4 && request.status == 200){
 					data = JSON.parse(request.responseText);
 					for (i = 0; i < data.length; i++) {
-							newPerson = new google.maps.LatLng(myLat, myLng);
+							newlat = i;
+							newlon = i;
+							newPerson = new google.maps.LatLng(newlat, newlon);
 							newMarker = new google.maps.Marker({
 										position: newPerson,
 										title: "Here I Am!"
@@ -69,7 +71,7 @@
 					}
 				}
 			}
-			
+
 			function renderMap()
 			{
 				me = new google.maps.LatLng(myLat, myLng);
