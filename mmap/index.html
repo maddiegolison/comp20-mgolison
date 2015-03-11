@@ -61,7 +61,7 @@
 							newPerson = new google.maps.LatLng(newlat, newlon);
 							newMarker = new google.maps.Marker({
 										position: newPerson,
-										title: "Here is "+ data[i].login + " " + d
+										title: data[i].login + ": " + d
 									});
 							newMarker.setMap(map);
 							makeInfoWindow(newMarker);
