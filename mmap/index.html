@@ -13,7 +13,7 @@
 			var request = new XMLHttpRequest();
 			var me = new google.maps.LatLng(myLat, myLng);
 			var myOptions = {
-						zoom: 13, // The larger the zoom number, the bigger the zoom
+						zoom: 15, // The larger the zoom number, the bigger the zoom
 						center: me,
 						mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
@@ -37,6 +37,7 @@
 						myLat = position.coords.latitude;
 						myLng = position.coords.longitude;
 						sendLocations();
+						map.panTo(me);
 						//renderMap();
 					});
 				}
