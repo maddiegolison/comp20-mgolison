@@ -64,13 +64,15 @@
 										title: "Here is "+ data[i].login + " " + d
 									});
 							newMarker.setMap(map);
-							google.maps.event.addListener(newMarker, 'click', function() {
-									infowindow.setContent(newMarker.title);
-									infowindow.open(map, newMarker);
-								});
-
+							makeInfoWindow(newMarker);
 					}
 				}
+			}
+			function makeInfoWindow(newMarker) {
+				google.maps.event.addListener(newMarker, 'click', function() {
+				infowindow.setContent(newMarker.title);
+				infowindow.open(map, newMarker);
+				});
 			}
 			function computeDistance(newlat, newlon) {
 				var R = 6371;
