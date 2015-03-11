@@ -57,7 +57,7 @@
 					for (i = 0; i < data.length; i++) {
 							var newlat = data[i].lat;
 							var newlon = data[i].lng;
-							var d = computeDistance(newlat, newlon);
+							var d = computeDistance(newlat, newlon)*.621371;
 							newPerson = new google.maps.LatLng(newlat, newlon);
 							newMarker = new google.maps.Marker({
 										position: newPerson,
@@ -73,7 +73,7 @@
 				}
 			}
 			function computeDistance(newlat, newlon) {
-				var R = 6371; // metres
+				var R = 6371;
 				var latrad1 = toRadians(myLat);
 				var latrad2 = toRadians(newlat);
 				var radlatdif = toRadians(newlat-myLat);
