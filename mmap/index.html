@@ -55,6 +55,7 @@
 				if (request.readyState == 4 && request.status == 200){
 					data = JSON.parse(request.responseText);
 					for (i = 0; i < data.length; i++) {
+						if (data[i].login != 'HawkVasquez') {;
 							var newlat = data[i].lat;
 							var newlon = data[i].lng;
 							var d = computeDistance(newlat, newlon)*.621371;
@@ -65,6 +66,7 @@
 									});
 							newMarker.setMap(map);
 							makeInfoWindow(newMarker);
+						}
 					}
 				}
 			}
@@ -98,7 +100,7 @@
 				// Update map and go there...
 				map.panTo(me);
 	
-				var image = 'google-marker.png';
+				var image = 'minion.png';
 				marker = new google.maps.Marker({
 					position: me,
 					title: "Here I Am!",
