@@ -6,7 +6,19 @@
 	<title>Captain's Log</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
-	  // Most of your work will be done here...
+	  		$("document").ready(function() {
+	  			for (key in localStorage) {
+					$("#log").prepend(localStorage.getItem(key));
+				}
+				
+	  			$("#msg").change(function(){
+    				txt = $("#msg").val();
+    				now = Date();
+    				toStore = "<p>" + now + ' - ' + $("#msg").val() + "<p>";
+    				$("#log").prepend("<p>" + now + ' - ' + $("#msg").val() + "<p>");
+    				localStorage.setItem(now, toStore);
+				});
+	  		});
 	</script>
 </head>
 
