@@ -3,14 +3,14 @@
 <html>
 	<head>
 		<title> Maddie's Marauder's Map</title>
-		<link rel="stylesheet" href="mapstyle.css" />
+		<link rel="stylesheet" href="assign4style.css" />
 	</head>
 
 	<body>
 		<h1>Assignment 4: Security Assessment</h1>
 		<h3>Introduction </h3>
 			<p>In our assignment 4, we learned how to implement a database that stores information from our assignment 2 (mmap).  However, we did not initially realize that our projects are laden with security vulnerabilities.  While analyzing Feiyu Lu's code, I learned that he had many vulnerabilities.</p>
-			<p>During this assignment, I found myself wondering what is a vulnerability.  I was not sure at first what distinguishes a vulnerability from bad coding practices.  I learned that some issues were a mix of both, but for the most part vulnerabilities were problems with the code that would make it possible for someone else to alter the functionality of an application.</p>
+			<p>During this assignment, I found myself wondering <span id="ital">what is a vulnerability</span>.  I was not sure at first what distinguishes a vulnerability from bad coding practices.  I learned that some issues were a mix of both, but for the most part vulnerabilities were problems with the code that would make it possible for someone else to alter the functionality of an application.</p>
 		<h3>Methodology</h3>
 			<p>I used a few different methods for finding vulnerabilities. One major one was utilizing curl to insert a script into Feiyu's database. Another method was then reading through his code to see if I could find any obvious flaws.</p>
 		<h3>Abstract of Findings</h3>
@@ -22,24 +22,24 @@
    						<li>Location: when the GET method is called</li>
     					<li>Severity of Issue: HIGH because there would be no functionality if a user entered a malicious script using curl</li>
     					<li>Description of Issue: The issue with Feiyu's code is that I can curl data to his server without any barriers.  I was able to break his code by inserting a script that executed an alert when the page is loaded.</li>
-    					<li>Proof of Vulnerability: <p><img src="ss1.png" alt="image1" height="300" width="600"> <img src="ss2.png" alt="image2" height="300" width="400"></p></li>
+    					<li>Proof of Vulnerability: <p><img src="ss1.png" alt="image1"> <img src="ss2.png" alt="image2"></p></li>
     					<li>Resolution: one could either parse the input or parse the output (when information is being retrieved from the database); however, it is much safer to parse the input when it is entered.  One way to do this is to substitute the script tags for the ampersand characters (with lt and gt).</li>
   					</ul>
    				<h4><li>Authentication</li> </h4>
   					<ul>
    						<li>Location: '/location.json'</li>
-    					<li>Severity of Issue</li>
+    					<li>Severity of Issue: MEDIUM because although having access to the database may not necessarily "break" the server, it is a huge security threat in general for anyone to have access to people's information.</li>
     					<li>Description of Issue:  Feiyu does not have any sort of authentication for his server.  Any person can have access to the data of a given person using /location.json?login=username.</li>
-    					<li>Proof of Vulnerability</li>
-    					<li>Resolution</li>
+    					<li>Proof of Vulnerability:<p>I was able to look up the location of HawkRichards without any sort of barrier.<img src="ss4.png" alt="image4"></p></li>
+    					<li>Resolution: for assignment 3, we could fix this issue by creating some sort of login page.  That way only a user who should have access to the database will have access to the database.</li>
   					</ul>
-   				<h4><li>Being able to change your lat and long to fake locations</li> </h4>
+   				<h4><li>Being able to change database information</li> </h4>
    					<ul>
-    					<li>Location</li>
-    					<li>Severity of Issue</li>
-    					<li>Description of Issue</li>
-    					<li>Proof of Vulnerability</li>
-    					<li>Resolution</li>
+    					<li>Location: '/sendLocation'</li>
+    					<li>Severity of Issue: HIGH because any person can overwrite or add information to the database.</li>
+    					<li>Description of Issue: I was able to curl new latitude and longitude values into the database for HawkRichards. Therefore, if someone knows a login then they can provide false information using curl.</li>
+    					<li>Proof of Vulnerability: <p><img src="ss3.png" alt="image3"><img src="ss5.png" alt="image5"></p></li>
+    					<li>Resolution: A login page could work for this.  However, this would not necessarily keep someone from tampering with the information.  </li>
   					</ul>
 			</ol>
 	</body>
