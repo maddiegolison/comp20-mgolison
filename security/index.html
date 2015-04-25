@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title> Maddie's Marauder's Map</title>
+		<title> Maddie's Assign 4</title>
 		<link rel="stylesheet" href="assign4style.css" />
 	</head>
 
@@ -20,7 +20,7 @@
   				<h4><li>Cross Site Scripting</li></h4>
   					<ul>
    						<li>Location: when the GET method is called</li>
-    					<li>Severity of Issue: HIGH because there would be no functionality if a user entered a malicious script using curl</li>
+    					<li>Severity of Issue: <span id="level">HIGH</span> because there would be no functionality if a user entered a malicious script using curl</li>
     					<li>Description of Issue: The issue with Feiyu's code is that I can curl data to his server without any barriers.  I was able to break his code by inserting a script that executed an alert when the page is loaded.</li>
     					<li>Proof of Vulnerability: <p><img src="ss1.png" alt="image1"> <img src="ss2.png" alt="image2"></p></li>
     					<li>Resolution: one could either parse the input or parse the output (when information is being retrieved from the database); however, it is much safer to parse the input when it is entered.  One way to do this is to substitute the script tags for the ampersand characters (with lt and gt).</li>
@@ -28,7 +28,7 @@
    				<h4><li>Authentication</li> </h4>
   					<ul>
    						<li>Location: '/location.json'</li>
-    					<li>Severity of Issue: MEDIUM because although having access to the database may not necessarily "break" the server, it is a huge security threat in general for anyone to have access to people's information.</li>
+    					<li>Severity of Issue: <span id="level">MEDIUM</span> because although having access to the database may not necessarily "break" the server, it is a huge security threat in general for anyone to have access to other people's information.</li>
     					<li>Description of Issue:  Feiyu does not have any sort of authentication for his server.  Any person can have access to the data of a given person using /location.json?login=username.</li>
     					<li>Proof of Vulnerability:<p>I was able to look up the location of HawkRichards without any sort of barrier.<img src="ss4.png" alt="image4"></p></li>
     					<li>Resolution: for assignment 3, we could fix this issue by creating some sort of login page.  That way only a user who should have access to the database will have access to the database.</li>
@@ -36,11 +36,13 @@
    				<h4><li>Being able to change database information</li> </h4>
    					<ul>
     					<li>Location: '/sendLocation'</li>
-    					<li>Severity of Issue: HIGH because any person can overwrite or add information to the database.</li>
-    					<li>Description of Issue: I was able to curl new latitude and longitude values into the database for HawkRichards. Therefore, if someone knows a login then they can provide false information using curl.</li>
+    					<li>Severity of Issue: <span id="level">HIGH</span> because any person can overwrite or add information to the database.</li>
+    					<li>Description of Issue: I was able to curl false latitude and longitude values into the database for HawkRichards. Therefore, if someone knows a login then they can provide false information using curl.  They could also add people that are not actually in the database and provide false information for them as well.</li>
     					<li>Proof of Vulnerability: <p><img src="ss3.png" alt="image3"><img src="ss5.png" alt="image5"></p></li>
-    					<li>Resolution: A login page could work for this.  However, this would not necessarily keep someone from tampering with the information.  </li>
+    					<li>Resolution: A login page could work for this.  However, this would not necessarily keep someone from tampering with the information. The most important way to prevent this issue is to make sure that people cannot alter information in the database.</li>
   					</ul>
 			</ol>
+		<h3>Conclusion</h3>
+			<p>One thing I realized while taking this class was that in general we were not worried about security issues and other vulnerabilities.  However, during this assignment and the last week of classes I realized that all programming should be defensive (whether it is in C or javascript);  I am very happy that we spent time talking about security because I think writing defensive code is even more important in web programming than what I have done in the past.  We must expect the user to try and break our applications, and need to account for any kind of attack that could take place.  While analyzing Feiyu's code I saw some "bad" coding practices (e.g. he outputs [] instead of {} when the login is invalid for location.json., etc.); however, the security issues were definitely more alarming.  His application because completely disfunctional after I inserted a script using curl, and this illustrated to me how important these issues are.</p>	
 	</body>
 </html>
